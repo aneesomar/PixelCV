@@ -37,8 +37,36 @@ k.scene("main", async () => {
         k.area({ shape: new k.Rect(k.vec2(0, 3), 10, 10) }),
         k.body(),
         k.anchor("center"),
-
-
+        l.pos(),
+        k.scale(scaleFactor),
+        {
+            speed: 250,
+            direction: "down",
+            isInDialogue: false,
+        },
+        "player",
     ]);
+
+    for (const layer of layers) {
+        if (layer.name == "boundries") {
+            for (const boundary of layer.objects) {
+                map.add([
+                    k.area({
+                        shape: new k.Rect(k.vec2(0), boundary.width, boundary.height),
+                    }),
+                    k.body({ isStatic: true }),
+                    k.pos(boundary.x, boundary.y),
+                    boundary.name,
+                ]);
+
+                if (boundary.name) {
+                    player.onCollide(boundary.name, () => {
+                        player.isInDialogue = true;
+                        // TODO 
+                    })
+                }
+            }
+        }
+    }
 });
 k.go("main");
