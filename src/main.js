@@ -33,7 +33,7 @@ k.scene("main", async () => {
         k.scale(scaleFactor)
     ]);
 
-    const player = k.make([
+    const player = k.add([
         k.sprite("spritesheet", { anim: "idle-down" }),
         k.area({ shape: new k.Rect(k.vec2(0, 3), 10, 10) }),
         k.body(),
@@ -95,7 +95,5 @@ k.scene("main", async () => {
         const worldMousePos = k.toWorld(k.mousePos());
         player.moveTo(worldMousePos, player.speed)
     })
-
-
 });
 k.go("main");
