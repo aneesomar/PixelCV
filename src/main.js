@@ -20,10 +20,12 @@ k.loadSprite("spritesheet", "./spritesheet.png", {
 
 k.loadSprite("map", "./map.png");
 
-k.setBackground(k.Color.fromHex("#311047"));
+k.setBackground(k.Color.fromHex("#1f5651"));
+
 
 k.scene("main", async () => {
     // once mapData is finished we move on to he next step (await)
+
     const mapData = await (await fetch("./map.json")).json();
     const layers = mapData.layers;
 
@@ -47,6 +49,7 @@ k.scene("main", async () => {
         },
         "player",
     ]);
+
 
     for (const layer of layers) {
         if (layer.name == "boundries") {
@@ -211,3 +214,4 @@ k.scene("main", async () => {
 
 });
 k.go("main");
+
