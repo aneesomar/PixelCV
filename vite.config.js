@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-    base: "/PixelCV/",
+    base: "./",
     build: {
         minify: "terser",
     },
